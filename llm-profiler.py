@@ -27,8 +27,7 @@ with get_accelerator().device(0):
     device = get_accelerator().current_device()
     device_name = get_accelerator().current_device_name()
 
-    # model_name = "/home/user1/workspace/llm-work/moe-profile/deepseek-ai/DeepSeek-V2-Lite"   # "deepseek-ai/DeepSeek-V2-Lite-Chat"
-    model_name = "/home/user1/workspace/llm-work/moe-profile/Qwen/Qwen3-30B-A3B-Instruct-2507"   # "Qwen/Qwen3-30B-A3B-Instruct-2507"
+    model_name = "./Qwen/Qwen3-30B-A3B-Instruct-2507"   # "./deepseek-ai/DeepSeek-V2-Lite-Chat"
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     # dtype / torch_dtype
     model = AutoModelForCausalLM.from_pretrained(
