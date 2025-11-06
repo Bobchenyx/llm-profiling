@@ -1,0 +1,16 @@
+torch
+transformers
+deepspeed
+huggingface-hub
+tokenizers
+safetensors
+numpy
+tqdm
+psutil
+requests
+PyYAML
+packaging
+regex
+filelock
+fsspec
+einops
