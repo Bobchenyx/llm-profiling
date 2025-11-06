@@ -14,3 +14,4 @@ regex
 filelock
 fsspec
 einops
+accelerate

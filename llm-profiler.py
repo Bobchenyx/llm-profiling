@@ -5,7 +5,7 @@ from deepspeed.profiling.flops_profiler import get_model_profile
 from deepspeed.accelerator import get_accelerator
 
 
-def ds_v2lite_input_constructor(batch_size, seq_len, tokenizer, device):
+def llm_input_constructor(batch_size, seq_len, tokenizer, device):
     # FLOPs-only dummy batch
     # if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
     #     tokenizer.pad_token = tokenizer.eos_token
@@ -45,7 +45,7 @@ with get_accelerator().device(0):
     seq_len = 128
     enable_profile = True
 
-    kwargs = ds_v2lite_input_constructor(batch_size, seq_len, tokenizer, device)
+    kwargs = llm_input_constructor(batch_size, seq_len, tokenizer, device)
     # use_cache=False
     kwargs["use_cache"] = False
 
