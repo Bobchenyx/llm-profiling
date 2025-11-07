@@ -1,8 +1,7 @@
-from functools import partial
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from deepspeed.profiling.flops_profiler import get_model_profile
-from deepspeed.accelerator import get_accelerator
+# from deepspeed.accelerator import get_accelerator
 
 
 def llm_input_constructor(batch_size, seq_len, tokenizer, device):
@@ -15,7 +14,7 @@ def llm_input_constructor(batch_size, seq_len, tokenizer, device):
         else:
             tokenizer.pad_token_id = 0
     
-    pad_id = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
+    pad_id = tokenizer.pad_token_id
 
     input_ids = torch.full((batch_size, seq_len), pad_id, dtype=torch.long, device=device)
     attention_mask = torch.ones_like(input_ids, device=device)
@@ -35,9 +34,6 @@ def main():
         device_map="auto",
     )
     model.eval()
-
-    # KV-cache / DynamicCache API 
-    model.config.use_cache = False
 
     batch_size = 4
     seq_len = 128
