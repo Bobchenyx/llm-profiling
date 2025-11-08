@@ -25,12 +25,14 @@ def llm_input_constructor(batch_size, seq_len, tokenizer, device):
 def main():
 
     model_name = "./Qwen/Qwen3-30B-A3B-Instruct-2507"   # "./deepseek-ai/DeepSeek-V2-Lite-Chat"
+    # model_name = "./deepseek-ai/DeepSeek-V3-0324"
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     # dtype / torch_dtype
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         trust_remote_code=True,
-        dtype=torch.bfloat16,
+        # dtype=torch.bfloat16,
+        dtype="auto",
         device_map="auto",
     )
     model.eval()

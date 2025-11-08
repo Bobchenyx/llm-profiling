@@ -5,9 +5,14 @@ from huggingface_hub import snapshot_download
 
 print("Starting download...")
 
+# snapshot_download(
+#     repo_id = "deepseek-ai/DeepSeek-V2-Lite",
+#     local_dir = "deepseek-ai/DeepSeek-V2-Lite",
+# )
+
 snapshot_download(
-    repo_id = "deepseek-ai/DeepSeek-V2-Lite",
-    local_dir = "deepseek-ai/DeepSeek-V2-Lite",
+    repo_id = "deepseek-ai/DeepSeek-V3-0324",
+    local_dir = "deepseek-ai/DeepSeek-V3-0324",
 )
 
 
