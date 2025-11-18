@@ -31,6 +31,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python llm-profiler.py 2>&1 | tee logs/<llm-provide
 
 Sample output provided in [`logs/`](./logs/) dir.
 
+If people are interested in `torch.profiler` with DeepSeek MoE, please checkout [Bobchenyx/DeepSeek-V3/tree/llm-profiling](https://github.com/Bobchenyx/DeepSeek-V3/tree/llm-profiling)
+
 ---
 ## Citation
 
