@@ -1,5 +1,5 @@
 # llm-profiling
-LLM Profiling with DeepSpeed Flops Profiler
+LLM Profiling with DeepSpeed Flops Profiler & torch profiler
 
 ## Installation
 
@@ -30,6 +30,11 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python llm-profiler.py 2>&1 | tee logs/<llm-provide
 ```
 
 Sample output provided in [`logs/`](./logs/) dir.
+
+For Qwen3 with vllm
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 python qwen3-vllm.py
+```
 
 If people are interested in `torch.profiler` with DeepSeek MoE, please checkout [Bobchenyx/DeepSeek-V3/tree/llm-profiling](https://github.com/Bobchenyx/DeepSeek-V3/tree/llm-profiling)
 
