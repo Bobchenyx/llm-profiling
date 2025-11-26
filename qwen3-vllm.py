@@ -2,13 +2,13 @@
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
 # adapted from https://github.com/Bobchenyx/vllm/blob/qwen3/examples/offline_inference/simple_profiling.py
 
-# import os
-# import time
+import os
+import time
 
 from vllm import LLM, SamplingParams
 
 # enable torch profiler, can also be set on cmd line
-# os.environ["VLLM_TORCH_PROFILER_DIR"] = "./vllm_profile"
+os.environ["VLLM_TORCH_PROFILER_DIR"] = "./vllm_profile"
 
 # Sample prompts.
 prompts = [
@@ -18,7 +18,8 @@ prompts = [
     "The future of AI is",
 ]
 # Create a sampling params object.
-sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=256)
+sampling_params = SamplingParams(temperature=0.8, top_p=0.95)
+# sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=256)
 
 
 def main():
@@ -32,13 +33,13 @@ def main():
         enforce_eager=True,
         )
 
-    # llm.start_profile()
+    llm.start_profile()
 
     # Generate texts from the prompts. The output is a list of RequestOutput
     # objects that contain the prompt, generated text, and other information.
     outputs = llm.generate(prompts, sampling_params)
 
-    # llm.stop_profile()
+    llm.stop_profile()
 
     # Print the outputs.
     print("-" * 50)
@@ -50,7 +51,7 @@ def main():
 
     # Add a buffer to wait for profiler in the background process
     # (in case MP is on) to finish writing profiling output.
-    # time.sleep(10)
+    time.sleep(10)
 
 
 if __name__ == "__main__":
